@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <!-- <link rel="stylesheet" href="../index.js"> -->
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="content">
+
+        <h2>Them mon hoc</h2>
+        <form id="create" method="POST" enctype="multipart/form-data" action="/add">
+            <label for="">Nhap ID</label>
+            <input type="number" name="ID"><br> <br>
+
+            <label for="">Nhap ten mon hoc</label>
+            <input type="text" name="tenMH"> <br> <br>
+
+            <label for="">Nhap Loai mon hoc</label>
+            <input type="text" name="loaiMH"> <br> <br>
+
+            <label for="">Nhap Hoc ky</label>
+            <input type="text" name="HK"> <br> <br>
+
+            <label for="">Nhap Khoa</label>
+            <input type="text" name="Khoa"> <br> <br>
+
+            <label>URL anh</label>
+            <input type="text" name="URL"><br>
+            <input type="submit" value="Submit" />
+        </form>
+
+
+        <h1>Danh sach cac mon hoc</h1>
+        <form action="/delete" method="post" enctype="multipart/form-data">
+
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>URL</th>
+                    <th>Ten mon hoc</th>
+                    <th>Loai mon hoc</th>
+                    <th>Hoc ky</th>
+                    <th>Khoa</th>
+                    <th>Lua chon</th>
+                </tr>
+                <% for (let i=0; i < monHocs.length; i++) { %>
+                    <tr>
+                        <td>
+                            <%=monHocs[i].ID%>
+                        </td>
+                        <td>
+                            <img src=<%=monHocs[i].URL%>>
+                        </td>
+                        <td>
+                            <%=monHocs[i].tenMonHoc%>
+                        </td>
+                        <td>
+                            <%=monHocs[i].loaiMonHoc%>
+                        </td>
+                        <td>
+                            <%=monHocs[i].hocKy%>
+                        </td>
+                        <td>
+                            <%=monHocs[i].khoa%>
+                        </td>
+                        <td>
+                            <input type="checkbox" name=" <%=monHocs[i].ID%> ">
+
+                        </td>
+                    </tr>
+                    <%}%>
+            </table>
+            <br>
+            <input type="submit" value="Xoa">
+        </form>
+    </div>
+</body>
+
+</html>
